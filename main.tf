@@ -88,6 +88,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   size                  = "Standard_B2ts_v2"
   admin_username        = "adminuser"
   network_interface_ids = [azurerm_network_interface.nic.id]
+  custom_data           = filebase64("customdata.tpl")
   admin_ssh_key {
     username   = "adminuser"
     public_key = file("~/.ssh/azure_id.pub")
